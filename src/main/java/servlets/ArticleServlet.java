@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Article;
 import models.Category;
@@ -83,6 +84,8 @@ public class ArticleServlet extends HttpServlet {
 				}
 			}) ;
 			allArticles.add(newArticle) ;
+			HttpSession session = request.getSession() ;
+			session.setAttribute("allArticles", allArticles) ;
 			request.setAttribute("allArticles", allArticles) ;
 			request.getRequestDispatcher("WEB-INF/article/article-list.jsp").forward(request, response);
 		} else if (request.getServletPath().contains("update")) {
@@ -102,6 +105,8 @@ public class ArticleServlet extends HttpServlet {
 					article = articleDetail ;
 				}
 			}) ;
+			HttpSession session = request.getSession() ;
+			session.setAttribute("allArticles", allArticles) ;
 			request.setAttribute("allArticles", allArticles) ;
 			request.getRequestDispatcher("WEB-INF/article/article-list.jsp").forward(request, response);
 		}

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Supplier;
 
@@ -69,6 +70,8 @@ public class SupplierServlet extends HttpServlet {
 			newSupplier.setTel(request.getParameter("tel")) ;
 			newSupplier.setAddress(request.getParameter("address")) ;
 			allSuppliers.add(newSupplier) ;
+			HttpSession session = request.getSession() ;
+			session.setAttribute("allSuppliers", allSuppliers) ;
 			request.setAttribute("allSuppliers", allSuppliers);
 			request.getRequestDispatcher("WEB-INF/supplier/supplier-list.jsp").forward(request, response);
 		} else if (request.getServletPath().contains("update")) {
@@ -81,6 +84,8 @@ public class SupplierServlet extends HttpServlet {
 					supplier = supplierDetail ;
 				}
 			}) ;
+			HttpSession session = request.getSession() ;
+			session.setAttribute("allSuppliers", allSuppliers) ;
 			request.setAttribute("allSuppliers", allSuppliers);
 			request.getRequestDispatcher("WEB-INF/supplier/supplier-list.jsp").forward(request, response);
 		}

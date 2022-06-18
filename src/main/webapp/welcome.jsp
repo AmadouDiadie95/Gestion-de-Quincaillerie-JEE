@@ -18,7 +18,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">Categories</h6>
-                                            <h6 class="font-extrabold mb-0">{{$total_categorie}}</h6>
+                                            <h6 class="font-extrabold mb-0">${allCategories.size()}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">Articles</h6>
-                                            <h6 class="font-extrabold mb-0">{{$total_article}}</h6>
+                                            <h6 class="font-extrabold mb-0">${allArticles.size()}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">Fournisseurs</h6>
-                                            <h6 class="font-extrabold mb-0">{{$total_fournisseur}}</h6>
+                                            <h6 class="font-extrabold mb-0">${allSuppliers.size()}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">Commandes</h6>
-                                            <h6 class="font-extrabold mb-0">{{$total_commande}}</h6>
+                                            <h6 class="font-extrabold mb-0">${allCommandes.size()}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -260,7 +260,7 @@
                             <h4>Somme Total dans la Caisse : </h4>
                         </div>
                         <div class="card-body">
-                            <h2> {{$total_somme_caisse}} Fcfa</h2>
+                            <h2> ${total_somme_caisse} Fcfa</h2>
                         </div>
                         <div class="text-center card-footer">
                             <button id="info"

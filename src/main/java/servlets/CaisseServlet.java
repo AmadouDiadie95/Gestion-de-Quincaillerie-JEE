@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Commande;
 
@@ -64,6 +65,8 @@ public class CaisseServlet extends HttpServlet {
 		newCommande.setTotal_price(Double.parseDouble( request.getParameter("total_price")) );
 		allCommandes.add(newCommande) ;
 		request.setAttribute("allAchats", allCommandes) ;
+		HttpSession session = request.getSession() ;
+		session.setAttribute("allAchats", allCommandes) ;
 		request.getRequestDispatcher("WEB-INF/caisse/etat-caisse.jsp").forward(request, response);
 	}
 

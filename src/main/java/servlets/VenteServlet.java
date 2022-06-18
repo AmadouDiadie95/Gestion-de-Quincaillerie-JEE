@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Vente;
 
@@ -60,6 +61,8 @@ public class VenteServlet extends HttpServlet {
 		newVente.setQuantity_choiced(Integer.parseInt(request.getParameter("quantity_choiced"))) ;
 		newVente.setTotal_price(Double.parseDouble( request.getParameter("total_price")) );
 		allVentes.add(newVente) ;
+		HttpSession session = request.getSession() ;
+		session.setAttribute("allVentes", allVentes) ;
 		request.setAttribute("allVentes", allVentes) ;
 		request.getRequestDispatcher("WEB-INF/vente/vente-list.jsp").forward(request, response);
 	}

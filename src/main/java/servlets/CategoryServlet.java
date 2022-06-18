@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import models.Category;
 
@@ -70,6 +71,9 @@ public class CategoryServlet extends HttpServlet {
 			allCategories.add(newCategory);
 			// System.out.println(allCategories.toString()) ;
 			request.setAttribute("allCategories", allCategories);
+			HttpSession session = request.getSession() ;
+			session.setAttribute("allCategories", allCategories) ;
+			// System.out.println(allCategories.toString());
 			request.getRequestDispatcher("WEB-INF/category/category-list.jsp").forward(request, response);
 			
 		} else if (request.getServletPath().contains("update")) {
@@ -81,6 +85,8 @@ public class CategoryServlet extends HttpServlet {
 					categorie = categoryDetail ;
 				}
 			}) ;
+			HttpSession session = request.getSession() ;
+			session.setAttribute("allCategories", allCategories) ;
 			request.setAttribute("allCategories", allCategories) ;
 			request.getRequestDispatcher("WEB-INF/category/category-list.jsp").forward(request, response);
 			
